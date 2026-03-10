@@ -1,17 +1,27 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../utils/constants';
+
 
 function Login() {
 
     const [emailId, setEmailId] = useState("krishna@gmail.com");
     const [password, setPassword] = useState("Krishna@1234");
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
     const handleLogin = async () => {
         try {
-            const res = await axios.post("http://localhost:7777/login", {
+            const res = await axios.post(BASE_URL + "/login", {
                 emailId,
                 password
             }, { withCredentials: true })
+            dispatch(addUser(res.data));
+            navigate("/");
         } catch (err) {
             console.log(err);
         }
@@ -22,13 +32,6 @@ function Login() {
             <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
                 <legend className="fieldset-legend text-2xl text-blue-400">Login</legend>
                 <div className='flex justify-center'>
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
                 </div>
 
                 <label className="label">Email</label>
