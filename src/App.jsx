@@ -1,14 +1,16 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import Body from "./Body"
 import Login from "./components/Login"
 import Profile from "./components/Profile"
-import { Provider } from "react-redux"
+import { Provider, useDispatch } from "react-redux"
 import appStore from "./utils/appStore"
 import Feed from "./components/Feed"
+import { BASE_URL } from "./utils/constants"
+import { addUser } from "./utils/userSlice"
+import { useEffect } from "react"
 
 function App() {
-
   return (
     <>
       <Provider store={appStore}>
