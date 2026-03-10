@@ -8,7 +8,6 @@ import axios from 'axios';
 function NavBar() {
 
     const user = useSelector((store) => store.user.user);
-    console.log(user);
     const disPatch = useDispatch();
     const navigate = useNavigate();
 
