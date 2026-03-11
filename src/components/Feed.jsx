@@ -9,7 +9,7 @@ import Loader from '../Loader';
 function Feed() {
     const disPatch = useDispatch();
     const DataStore = useSelector(store => store.feed.feed)
-    console.log(DataStore);
+    // console.log(DataStore);
     const fetchFeed = async () => {
         try {
             const res = await axios.get(BASE_URL + "/feed", {

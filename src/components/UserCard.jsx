@@ -1,7 +1,7 @@
 import React from "react";
 
 function UserCard({ userfeed }) {
-    console.log(userfeed);
+    // console.log(userfeed);
     return (
         <div className="flex flex-wrap justify-center gap-6">
             {userfeed.map((user) => (

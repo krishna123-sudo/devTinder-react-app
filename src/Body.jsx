@@ -28,10 +28,11 @@ function Body() {
     }
 
     useEffect(() => {
+        if (!userData) {
+            fetchUser();
+        }
 
-        fetchUser();
-
-    }, [])
+    })
 
     return (
         <div>

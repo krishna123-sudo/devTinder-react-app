@@ -23,6 +23,8 @@ function NavBar() {
         }
     }
 
+    const name = {}
+
     return (
         <div className="navbar bg-base-200 shadow-sm">
             <div className="flex-1">
@@ -31,13 +33,13 @@ function NavBar() {
             <div className="flex gap-2">
                 {user && (
                     <div className='navbar'>
-                        <div className='form-control'>Welcome,{user.data.firstName + " " + user.data.lastName}</div>
+                        <div className='form-control'>Welcome,{user.data.firstName || user.firstName + " " + user.data.lastName || user.lastName}</div>
                         <div className="dropdown dropdown-end mx-5 flex">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src={user.data.photoUrl} />
+                                        src={user.data.photoUrl || user.photoUrl} />
                                 </div>
                             </div>
                             <ul
