@@ -25,7 +25,6 @@ function Login() {
             navigate("/");
         } catch (err) {
             setError(err.response?.data?.message || err.message);
-            console.log("ERORRRRRRRRRRRRRRRRRR:", error)
             // console.log(err);
         }
     }
