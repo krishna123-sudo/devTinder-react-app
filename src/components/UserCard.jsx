@@ -5,7 +5,7 @@ function UserCard({ userfeed }) {
     return (
         <div className="flex flex-wrap justify-center gap-6">
             {userfeed.map((user) => (
-                <div key={user._id} className="card bg-base-300 w-96 shadow-sm">
+                <div key={user._id} className="card bg-base-300 w-80 shadow-sm">
                     <figure className="px-10 pt-10">
                         <img
                             src={user.photoUrl}
@@ -19,7 +19,7 @@ function UserCard({ userfeed }) {
                             {user.firstName} {user.lastName}
                         </h2>
 
-                        <p>{user.skills.join(", ")}</p>
+                        <p>{user.skills?.join(", ")}</p>
 
                         <p>{user.about}</p>
 

@@ -6,6 +6,7 @@ import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import Loader from '../Loader';
+import UserCard from './UserCard';
 
 function EditProfile({ userData }) {
 
@@ -15,6 +16,7 @@ function EditProfile({ userData }) {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [about, setAbout] = useState("");
+    const [photoUrl, setPhotoUrl] = useState("");
 
     // Update form when userData arrives
     useEffect(() => {
@@ -22,6 +24,7 @@ function EditProfile({ userData }) {
             setFirstName(userData.firstName || "");
             setLastName(userData.lastName || "");
             setAbout(userData.about || "");
+            setPhotoUrl(userData.photoUrl) || ""
         }
     }, [userData]);
 
@@ -31,7 +34,7 @@ function EditProfile({ userData }) {
         try {
             const res = await axios.patch(
                 BASE_URL + "/profile/edit",
-                { firstName, lastName, about },
+                { firstName, lastName, about, photoUrl },
                 { withCredentials: true }
             );
 
@@ -45,8 +48,8 @@ function EditProfile({ userData }) {
     };
 
     return (
-        <div className="flex justify-center my-10">
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-96 border p-6">
+        <div className="flex justify-center  h-1/2">
+            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-80 border p-6">
                 <legend className="fieldset-legend text-lg font-semibold">
                     Edit Profile
                 </legend>
@@ -74,7 +77,13 @@ function EditProfile({ userData }) {
                     className="input w-full"
                     onChange={(e) => setAbout(e.target.value)}
                 />
-
+                <label className="label">Photo URL</label>
+                <input
+                    type="text"
+                    value={photoUrl}
+                    className="input w-full"
+                    onChange={(e) => setPhotoUrl(e.target.value)}
+                />
                 <button
                     className="btn btn-neutral mt-4 w-full"
                     onClick={profileUpdate}
@@ -82,6 +91,10 @@ function EditProfile({ userData }) {
                     Save User
                 </button>
             </fieldset>
+            <div className='mx-7'>
+                <UserCard userfeed={[{ firstName, lastName, about, photoUrl }]} />
+
+            </div>
         </div>
     )
 }
