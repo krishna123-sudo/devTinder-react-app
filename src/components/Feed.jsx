@@ -9,14 +9,14 @@ import Loader from '../Loader';
 function Feed() {
     const disPatch = useDispatch();
     const DataStore = useSelector(store => store.feed.feed)
+    console.log(DataStore);
     const fetchFeed = async () => {
         try {
-            const res = await axios.get(BASE_URL + "/user/connection", {
+            const res = await axios.get(BASE_URL + "/feed", {
                 withCredentials: true
             })
 
-            disPatch(addFeed(res.data.data));
-
+            disPatch(addFeed(res.data));
         } catch (err) {
             console.log(err)
         }
