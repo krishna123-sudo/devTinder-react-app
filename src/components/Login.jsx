@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
+import { toast } from 'react-toastify';
 
 
 function Login() {
@@ -22,6 +23,7 @@ function Login() {
                 password
             }, { withCredentials: true })
             dispatch(addUser(res.data));
+            toast.success("Logged in sucessfully")
             navigate("/");
         } catch (err) {
             setError(err.response?.data?.message || err.message);

@@ -9,11 +9,14 @@ import Feed from "./components/Feed"
 import { BASE_URL } from "./utils/constants"
 import { addUser } from "./utils/userSlice"
 import { useEffect } from "react"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
       <Provider store={appStore}>
+        <ToastContainer position="top-right" autoClose={2000} />
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body />}>
