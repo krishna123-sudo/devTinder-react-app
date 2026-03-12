@@ -35,11 +35,12 @@ function Requests() {
                 withCredentials: true
             })
             toast.success(`request ${status} see the connections!!`)
-            if (status == "accepted") {
-                navigate("/connections");
-            } else {
-                navigate("/")
-            }
+            // if (status == "accepted") {
+            //     navigate("/connections");
+            // } else {
+            //     navigate("/")
+            // }
+            fetchRequest()
         } catch (err) {
 
         } finally {

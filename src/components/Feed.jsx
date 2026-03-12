@@ -23,9 +23,9 @@ function Feed() {
     }
 
     useEffect(() => {
-        if (!DataStore) {
-            fetchFeed();
-        }
+
+        fetchFeed();
+
     }, [DataStore])
 
     if (!DataStore) return (
