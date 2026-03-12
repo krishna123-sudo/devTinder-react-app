@@ -91,7 +91,7 @@ function EditProfile({ userData }) {
                     Save User
                 </button>
             </fieldset>
-            <div className='mx-7'>
+            <div className='mx-7 my-7'>
                 <UserCard userfeed={[{ firstName, lastName, about, photoUrl }]} />
 
             </div>
