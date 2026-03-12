@@ -1,7 +1,22 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { BASE_URL } from "../utils/constants";
+import { toast } from "react-toastify";
 
 function UserCard({ userfeed }) {
     // console.log(userfeed);
+
+    const apiIntrestedIgnore = async (status, reqId) => {
+        try {
+            const res = await axios.post(BASE_URL + `/request/send/${status}/${reqId}`, {}, {
+                withCredentials: true
+            })
+            toast.success(`Rquest ${status}`)
+        } catch (err) {
+            consoler.log(err)
+        }
+    }
+
     return (
         <div className="flex flex-wrap justify-center gap-6">
             {userfeed.map((user) => (
@@ -24,8 +39,12 @@ function UserCard({ userfeed }) {
                         <p>{user.about}</p>
 
                         <div className="card-actions">
-                            <button className="btn btn-error">Ignore</button>
-                            <button className="btn btn-success">Interested</button>
+                            <button className="btn btn-error"
+                                onClick={() => apiIntrestedIgnore("ignore", user._id)}
+                            >Ignore</button>
+                            <button className="btn btn-success"
+                                onClick={() => apiIntrestedIgnore("intrested", user._id)}
+                            >Interested</button>
                         </div>
                     </div>
                 </div>
