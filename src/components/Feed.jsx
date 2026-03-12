@@ -12,7 +12,7 @@ function Feed() {
     // console.log(DataStore);
     const fetchFeed = async () => {
         try {
-            const res = await axios.get(BASE_URL + "/feed", {
+            const res = await axios.get(BASE_URL + "/feed?limit=5", {
                 withCredentials: true
             })
 
@@ -36,7 +36,7 @@ function Feed() {
 
     return (
         <div className='flex justify-center my-10'>
-            <UserCard userfeed={DataStore} />
+            <UserCard userfeed={DataStore} fetchFeed={fetchFeed} />
         </div>
     )
 }
