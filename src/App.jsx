@@ -11,6 +11,7 @@ import { addUser } from "./utils/userSlice"
 import { useEffect } from "react"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Connections from "./components/Connections"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/" element={<Feed />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/connections" element={<Connections />} />
             </Route>
           </Routes>
 
