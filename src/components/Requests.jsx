@@ -1,12 +1,16 @@
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { addRequest } from '../utils/requestsSlice';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function Requests() {
+    const [loading, setLoading] = useState(false);
     const requestData = useSelector(store => store.request.request);
     let dataRequest = requestData;
+    const navigate = useNavigate();
     const disPatch = useDispatch();
     const fetchRequest = async () => {
         try {
@@ -24,6 +28,25 @@ function Requests() {
         fetchRequest();
     }, [])
 
+    const statusChange = async (status, reqId) => {
+        try {
+            setLoading(true);
+            const res = await axios.post(BASE_URL + `/request/review/${status}/${reqId}`, {}, {
+                withCredentials: true
+            })
+            toast.success(`request ${status} see the connections!!`)
+            if (status == "accepted") {
+                navigate("/connections");
+            } else {
+                navigate("/")
+            }
+        } catch (err) {
+
+        } finally {
+            setLoading(false);
+        }
+    }
+
 
     if (!dataRequest) return null;
 
@@ -38,25 +61,34 @@ function Requests() {
                         <div key={user._id} className="card bg-base-200 shadow-sm rounded-xl">
                             <figure>
                                 <img className='my-2.5 rounded-full'
-                                    src={user?.toUserId?.photoUrl}
+                                    src={user?.fromUserId?.photoUrl}
                                     alt="profile"
                                 />
                             </figure>
 
                             <div className="flex justify-center card-body text-center">
                                 <h2 className="text-2xl">
-                                    {user?.toUserId?.firstName} {user.toUserId?.lastName}
+                                    {user?.fromUserId?.firstName} {user.fromUserId?.lastName}
                                 </h2>
 
                                 <h2 className="text-xl">
-                                    {user?.toUserId?.skills.join(",")}
+                                    {user?.fromUserId?.skills.join(",")}
                                 </h2>
 
-                                <p>{user.toUserId.about}</p>
+                                <p>{user.fromUserId.about}</p>
 
-                                <div className="card-actions justify-center p-4">
-                                    <button className="btn btn-primary">
-                                        Message
+                                <div className="flex justify-center gap-2">
+                                    <button
+                                        className="btn btn-error"
+                                        onClick={() => statusChange("rejected", user._id)}
+                                    >
+                                        Rejected
+                                    </button>
+                                    <button className="btn btn-success"
+                                        onClick={() => statusChange("accepted", user._id)}
+                                    >
+                                        Accepted
+
                                     </button>
                                 </div>
                             </div>
