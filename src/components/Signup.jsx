@@ -17,9 +17,11 @@ function Signup() {
     const [about, setAbout] = useState("");
     const [photoUrl, setPhotoUrl] = useState("");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleSignup = async () => {
         try {
+            setLoading(true);
             setError("");
 
             const payload = {
@@ -42,6 +44,8 @@ function Signup() {
             navigate("/login");
         } catch (err) {
             setError(err?.response?.data?.message || "Something went wrong");
+        } finally {
+            setLoading(false)
         }
     };
 
@@ -179,8 +183,13 @@ function Signup() {
                 <button
                     className="btn btn-primary mt-6 w-full"
                     onClick={handleSignup}
+                    disabled={loading}
                 >
-                    Create Account
+                    {loading ? (
+                        <span className="loading loading-spinner loading-sm"></span>
+                    ) : (
+                        "Sign up"
+                    )}
                 </button>
 
             </fieldset>

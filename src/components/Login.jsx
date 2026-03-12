@@ -12,12 +12,14 @@ function Login() {
     const [emailId, setEmailId] = useState("krishna@gmail.com");
     const [password, setPassword] = useState("Krishna@1234");
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
 
     const handleLogin = async () => {
         try {
+            setLoading(true);
             const res = await axios.post(BASE_URL + "/login", {
                 emailId,
                 password
@@ -28,6 +30,8 @@ function Login() {
         } catch (err) {
             setError(err.response?.data?.message || err.message);
             // console.log(err);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -47,10 +51,18 @@ function Login() {
                 <input type="password" value={password} className="input" placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
+
                 <p className='text-red-400'>{error}</p>
                 <button className="btn btn-neutral mt-4"
                     onClick={handleLogin}
-                >Login</button>
+                    disabled={loading}
+                >
+                    {loading ? (
+                        <span className="loading loading-spinner loading-sm"></span>
+                    ) : (
+                        "Login"
+                    )}
+                </button>
 
                 <p className="text-center text-sm mt-5"> Don't have an account?{" "}
                     <Link to="/signup"

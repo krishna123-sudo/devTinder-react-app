@@ -17,6 +17,7 @@ function EditProfile({ userData }) {
     const [lastName, setLastName] = useState("");
     const [about, setAbout] = useState("");
     const [photoUrl, setPhotoUrl] = useState("");
+    const [loading, setLoading] = useState(false);
 
     // Update form when userData arrives
     useEffect(() => {
@@ -32,6 +33,7 @@ function EditProfile({ userData }) {
 
     const profileUpdate = async () => {
         try {
+            setLoading(true);
             const res = await axios.patch(
                 BASE_URL + "/profile/edit",
                 { firstName, lastName, about, photoUrl },
@@ -44,6 +46,8 @@ function EditProfile({ userData }) {
 
         } catch (err) {
             console.log(err);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -87,8 +91,13 @@ function EditProfile({ userData }) {
                 <button
                     className="btn btn-neutral mt-4 w-full"
                     onClick={profileUpdate}
+                    disabled={loading}
                 >
-                    Save User
+                   {loading ? (
+                        <span className="loading loading-spinner loading-sm"></span>
+                    ) : (
+                        "Save User"
+                    )}
                 </button>
             </fieldset>
             <div className='mx-7 my-7'>
