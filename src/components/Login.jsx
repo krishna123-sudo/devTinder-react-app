@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 import { toast } from 'react-toastify';
 
@@ -51,6 +51,13 @@ function Login() {
                 <button className="btn btn-neutral mt-4"
                     onClick={handleLogin}
                 >Login</button>
+
+                <p className="text-center text-sm mt-5"> Don't have an account?{" "}
+                    <Link to="/signup"
+                        className="text-primary font-semibold hover:underline">
+                        Sign up
+                    </Link>
+                </p>
             </fieldset>
         </div>
     )
