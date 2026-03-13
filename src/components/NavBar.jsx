@@ -39,7 +39,7 @@ function NavBar() {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src={user.data.photoUrl || user.photoUrl} />
+                                        src={user?.data?.photoUrl || user?.photoUrl} />
                                 </div>
                             </div>
                             <ul

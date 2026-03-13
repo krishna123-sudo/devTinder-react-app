@@ -35,7 +35,7 @@ function Connections() {
                     <div key={user._id} className="card bg-base-200 shadow-sm rounded-xl">
                         <figure>
                             <img className='my-2.5 rounded-full'
-                                src={user.photoUrl}
+                                src={user?.photoUrl}
                                 alt="profile"
                             />
                         </figure>

@@ -32,7 +32,7 @@ function UserCard({ userfeed, fetchFeed }) {
 
             <figure className="px-10 pt-10">
                 <img
-                    src={user.photoUrl}
+                    src={user?.photoUrl}
                     alt="profile"
                     className="rounded-xl"
                 />
