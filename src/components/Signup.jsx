@@ -60,24 +60,26 @@ function Signup() {
                 {/* First Row */}
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <label className="label">First Name</label>
+                        <label className="label">First Name<h1 className="text-red-600">*</h1></label>
                         <input
                             type="text"
                             className="input input-bordered w-full"
                             placeholder="First Name"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
+                            required
                         />
                     </div>
 
                     <div>
-                        <label className="label">Last Name</label>
+                        <label className="label">Last Name<h1 className="text-red-600">*</h1></label>
                         <input
                             type="text"
                             className="input input-bordered w-full"
                             placeholder="Last Name"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
+                            required
                         />
                     </div>
                 </div>
@@ -96,15 +98,17 @@ function Signup() {
                     </div>
 
                     <div>
-                        <label className="label">Gender</label>
+                        <label className="label">Gender<h1 className="text-red-600">*</h1></label>
                         <select
                             className="select select-bordered w-full"
                             value={gender}
                             onChange={(e) => setGender(e.target.value)}
+                            required
                         >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
+                            <option value="others">others</option>
                         </select>
                     </div>
                 </div>
@@ -112,24 +116,26 @@ function Signup() {
                 {/* Third Row */}
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <label className="label">Email</label>
+                        <label className="label">Email<h1 className="text-red-600">*</h1></label>
                         <input
                             type="email"
                             className="input input-bordered w-full"
                             placeholder="Email"
                             value={emailId}
                             onChange={(e) => setEmailId(e.target.value)}
+                            required
                         />
                     </div>
 
                     <div>
-                        <label className="label">Phone Number</label>
+                        <label className="label">Phone Number<h1 className="text-red-600">*</h1></label>
                         <input
                             type="text"
                             className="input input-bordered w-full"
                             placeholder="Phone Number"
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
                         />
                     </div>
                 </div>
@@ -137,13 +143,14 @@ function Signup() {
                 {/* Fourth Row */}
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <label className="label">Password</label>
+                        <label className="label">Password<h1 className="text-red-600">*</h1></label>
                         <input
                             type="password"
                             className="input input-bordered w-full"
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
                     </div>
 
@@ -169,13 +176,14 @@ function Signup() {
                 ></textarea>
 
                 {/* Photo URL */}
-                <label className="label">Profile Photo URL</label>
+                <label className="label">Profile Photo URL<h1 className="text-red-600">*</h1></label>
                 <input
                     type="text"
                     className="input input-bordered w-full"
                     placeholder="Photo URL"
                     value={photoUrl}
                     onChange={(e) => setPhotoUrl(e.target.value)}
+                    required
                 />
 
                 {error && <p className="text-red-500 mt-2">{error}</p>}
