@@ -26,7 +26,7 @@ function Feed() {
 
         fetchFeed();
 
-    }, [DataStore])
+    }, [])
 
     if (!DataStore) return (
         <div className='flex justify-center my-20'>
