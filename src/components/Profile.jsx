@@ -7,7 +7,7 @@ function Profile() {
     const data = useSelector(store => store?.user?.user?.data)
 
     return (
-        <div className='flex justify-center my-10'><EditProfile userData={data} /></div>
+        <EditProfile userData={data} />
     )
 }
 
