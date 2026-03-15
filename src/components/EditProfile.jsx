@@ -22,10 +22,10 @@ function EditProfile({ userData }) {
     // Update form when userData arrives
     useEffect(() => {
         if (userData) {
-            setFirstName(userData.firstName || "");
-            setLastName(userData.lastName || "");
-            setAbout(userData.about || "");
-            setPhotoUrl(userData.photoUrl) || ""
+            setFirstName(userData?.firstName || "");
+            setLastName(userData?.lastName || "");
+            setAbout(userData?.about || "");
+            setPhotoUrl(userData?.photoUrl) || ""
         }
     }, [userData]);
 
@@ -40,7 +40,7 @@ function EditProfile({ userData }) {
                 { withCredentials: true }
             );
 
-            dispatch(addUser(res.data));
+            dispatch(addUser(res?.data));
             toast.success("Profile updated successfully");
             navigate("/");
 
@@ -93,7 +93,7 @@ function EditProfile({ userData }) {
                     onClick={profileUpdate}
                     disabled={loading}
                 >
-                   {loading ? (
+                    {loading ? (
                         <span className="loading loading-spinner loading-sm"></span>
                     ) : (
                         "Save User"

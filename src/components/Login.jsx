@@ -9,8 +9,8 @@ import { toast } from 'react-toastify';
 
 function Login() {
 
-    const [emailId, setEmailId] = useState("krishna@gmail.com");
-    const [password, setPassword] = useState("Krishna@1234");
+    const [emailId, setEmailId] = useState("");
+    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
@@ -24,11 +24,11 @@ function Login() {
                 emailId,
                 password
             }, { withCredentials: true })
-            dispatch(addUser(res.data));
+            dispatch(addUser(res?.data));
             toast.success("Logged in sucessfully")
             navigate("/");
         } catch (err) {
-            setError(err.response?.data?.message || err.message);
+            setError(err?.response?.data?.message || err?.message);
             // console.log(err);
         } finally {
             setLoading(false);

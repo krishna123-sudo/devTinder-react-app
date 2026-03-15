@@ -6,9 +6,11 @@ import { toast } from "react-toastify";
 function UserCard({ userfeed, fetchFeed }) {
     // console.log(userfeed);
     const [index, setIndex] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const apiIntrestedIgnore = async (status, reqId) => {
         try {
+            setLoading(true);
             const res = await axios.post(BASE_URL + `/request/send/${status}/${reqId}`, {}, {
                 withCredentials: true
             })
@@ -22,6 +24,8 @@ function UserCard({ userfeed, fetchFeed }) {
             }
         } catch (err) {
             consoler.log(err)
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -41,27 +45,39 @@ function UserCard({ userfeed, fetchFeed }) {
             <div className="card-body items-center text-center">
 
                 <h2 className="card-title">
-                    {user.firstName} {user.lastName}
+                    {user?.firstName} {user?.lastName}
                 </h2>
 
-                <p>{user.skills?.join(", ")}</p>
+                <p>{user?.skills?.join(", ")}</p>
 
-                <p>{user.about}</p>
+                <p>{user?.about}</p>
 
                 <div className="card-actions">
 
                     <button
                         className="btn btn-error"
                         onClick={() => apiIntrestedIgnore("ignore", user._id)}
+                        disabled={loading}
                     >
-                        Ignore
+                        {loading ? (
+                            <span className="spinner-border spinner-border-sm"></span>
+
+                        ) : (
+                            "Ignore"
+                        )}
                     </button>
 
                     <button
                         className="btn btn-success"
                         onClick={() => apiIntrestedIgnore("intrested", user._id)}
+                        disabled={loading}
+
                     >
-                        Interested
+                        {loading ? (
+                            <span className="spinner-border spinner-border-sm"></span>
+                        ) : (
+                            "Interested"
+                        )}
                     </button>
 
                 </div>

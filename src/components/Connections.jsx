@@ -14,7 +14,7 @@ function Connections() {
                 withCredentials: true
             });
             // console.log(res.data.data)
-            disPatch(addConnections(res.data.data))
+            disPatch(addConnections(res?.data?.data))
         } catch (err) {
             console.log(err);
         }
@@ -42,14 +42,14 @@ function Connections() {
 
                         <div className="flex justify-center card-body text-center">
                             <h2 className="text-2xl">
-                                {user.firstName} {user.lastName}
+                                {user?.firstName} {user?.lastName}
                             </h2>
 
                             <h2 className="text-xl">
-                                {user.skills.join(",")}
+                                {user?.skills.join(",")}
                             </h2>
 
-                            <p>{user.about}</p>
+                            <p>{user?.about}</p>
 
                             <div className="card-actions justify-center p-4">
                                 <button className="btn btn-primary">

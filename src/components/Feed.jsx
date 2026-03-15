@@ -16,7 +16,7 @@ function Feed() {
                 withCredentials: true
             })
 
-            disPatch(addFeed(res.data));
+            disPatch(addFeed(res?.data));
         } catch (err) {
             console.log(err)
         }
