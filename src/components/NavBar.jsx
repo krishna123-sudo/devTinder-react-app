@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 import { removeUser } from '../utils/userSlice';
 import axios from 'axios';
@@ -10,6 +10,10 @@ function NavBar() {
     const user = useSelector((store) => store.user.user);
     const disPatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+    if (location.pathname === "/login" || location.pathname === "/signup") {
+        return null;
+    }
 
     const handleLogout = async () => {
         try {
@@ -39,7 +43,7 @@ function NavBar() {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Tailwind CSS Navbar component"
-                                        src={user?.data?.photoUrl || user?.photoUrl} />
+                                        src={user?.data?.photoUrl || user?.photoUrl || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz68b1g8MSxSUqvFtuo44MvagkdFGoG7Z7DQ&s"} />
                                 </div>
                             </div>
                             <ul
