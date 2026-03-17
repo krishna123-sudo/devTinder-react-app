@@ -95,6 +95,8 @@ import { toast } from "react-toastify";
 
 function UserCard({ userfeed, fetchFeed }) {
 
+    const feedData = userfeed.result.data;
+
     const [index, setIndex] = useState(0)
     const [loading, setLoading] = useState(false)
 
@@ -129,7 +131,7 @@ function UserCard({ userfeed, fetchFeed }) {
 
     }
 
-    const user = userfeed[index]
+    const user = feedData[index]
 
     return (
 
@@ -138,11 +140,6 @@ function UserCard({ userfeed, fetchFeed }) {
             <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-2xl overflow-hidden">
 
                 <div className=" overflow-hidden">
-                    {/* <img
-                        src={user?.photoUrl}
-                        alt="profile"
-                        className="w-full h-full object-cover rounded-full"
-                    /> */}
                     <figure className="flex justify-center px-10 pt-10">
 //                 <img
                             src={user?.photoUrl}
@@ -151,8 +148,6 @@ function UserCard({ userfeed, fetchFeed }) {
                         />
                     </figure>
                 </div>
-
-
 
                 <div className="p-6 text-center text-white">
 
