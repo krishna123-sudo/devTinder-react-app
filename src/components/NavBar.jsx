@@ -16,8 +16,7 @@ function NavBar() {
         return null;
     }
 
-    const user = userData.result.data;
-
+    const user = userData?.result?.data || userData?.data?.result?.data;
     const handleLogout = async () => {
         try {
 

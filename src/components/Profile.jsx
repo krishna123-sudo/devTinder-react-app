@@ -4,7 +4,7 @@ import axios from 'axios'
 import { BASE_URL } from '../utils/constants'
 
 function Profile() {
-    const data = useSelector(store => store?.user?.user?.data)
+    const data = useSelector(store => store?.user?.user)
 
     return (
         <EditProfile userData={data} />

@@ -86,7 +86,9 @@ function Connections() {
                 { withCredentials: true }
             )
 
-            dispatch(addConnections(res?.data?.data))
+            console.log(res)
+
+            dispatch(addConnections(res?.data?.result?.data))
 
         } catch (err) {
             console.log(err)

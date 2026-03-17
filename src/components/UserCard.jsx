@@ -5,8 +5,6 @@ import { toast } from "react-toastify";
 
 function UserCard({ userfeed, fetchFeed }) {
 
-    const feedData = userfeed.result.data;
-
     const [index, setIndex] = useState(0)
     const [loading, setLoading] = useState(false)
 
@@ -41,7 +39,7 @@ function UserCard({ userfeed, fetchFeed }) {
 
     }
 
-    const user = feedData[index]
+    const user = userfeed[index]
 
     return (
 
