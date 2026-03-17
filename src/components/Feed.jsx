@@ -82,8 +82,8 @@ import Loader from "../Loader";
 function Feed() {
 
     const dispatch = useDispatch();
-    const DataStore = useSelector((store) => store.feed.feed);
-
+    const feed = useSelector((store) => store.feed.feed);
+    const DataStore = feed?.result?.data;
     const fetchFeed = async () => {
         try {
 
