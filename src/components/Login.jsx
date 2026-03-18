@@ -36,42 +36,6 @@ function Login() {
     }
 
     return (
-        // <div className='flex justify-center my-10 p-10'>
-        //     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-        //         <legend className="fieldset-legend text-2xl text-blue-400">Login</legend>
-        //         <div className='flex justify-center'>
-        //         </div>
-
-        //         <label className="label">Email</label>
-        //         <input type="email" value={emailId} className="input" placeholder="Email"
-        //             onChange={(e) => setEmailId(e.target.value)}
-        //         />
-
-        //         <label className="label">Password</label>
-        //         <input type="password" value={password} className="input" placeholder="Password"
-        //             onChange={(e) => setPassword(e.target.value)}
-        //         />
-
-        //         <p className='text-red-400'>{error}</p>
-        //         <button className="btn btn-neutral mt-4"
-        //             onClick={handleLogin}
-        //             disabled={loading}
-        //         >
-        //             {loading ? (
-        //                 <span className="loading loading-spinner loading-sm"></span>
-        //             ) : (
-        //                 "Login"
-        //             )}
-        //         </button>
-
-        //         <p className="text-center text-sm mt-5"> Don't have an account?{" "}
-        //             <Link to="/signup"
-        //                 className="text-primary font-semibold hover:underline">
-        //                 Sign up
-        //             </Link>
-        //         </p>
-        //     </fieldset>
-        // </div>
         <div className="min-h-screen flex items-center justify-center 
 bg-gradient-to-br from-black via-gray-900 to-purple-900">
 
